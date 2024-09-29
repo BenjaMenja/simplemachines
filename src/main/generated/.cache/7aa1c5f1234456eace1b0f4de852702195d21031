@@ -1,0 +1,13 @@
+// 1.21.1	2024-09-27T17:03:34.1007619	Simple Machines/Model Definitions
+d823accd56e75a0db982e60bdc34fed69a87e4a1 assets\simplemachines\models\block\battery.json
+57c043e2784aa4abf7be1b9127200158d57a13c6 assets\simplemachines\blockstates\washer.json
+c9084c2ba5434ead862c346da1d8b1402d267146 assets\simplemachines\models\item\washer.json
+453ab854f511ba3f0e6bc27c14f14b3b0388acfb assets\simplemachines\blockstates\furnace_generator.json
+b0f98db7630c76bb2d4dabc0f34ec5c539cadab8 assets\simplemachines\models\item\battery.json
+085433096e58f130ebe986c53cc7de6373e09daa assets\simplemachines\models\block\washer.json
+426101754546df5e3cd9e95ddfde5bac6cf33130 assets\simplemachines\models\item\furnace_generator.json
+88922b765b82301c66e637e0abfcd2e47bcdd787 assets\simplemachines\models\item\quarry.json
+43e6db1533e162c9a33e6e25c5ab880253b1bd96 assets\simplemachines\blockstates\quarry.json
+82f0ec127c2460bd91ec134eaf2baca8d20b4372 assets\simplemachines\blockstates\battery.json
+7941d8beb5eec67ab62332545ab22a1bdb0d99d9 assets\simplemachines\models\block\furnace_generator.json
+12db3f0a1237b2e90f0879f58515bfd884672d45 assets\simplemachines\models\block\quarry.json

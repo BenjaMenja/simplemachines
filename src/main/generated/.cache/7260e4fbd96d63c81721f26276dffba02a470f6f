@@ -1,0 +1,5 @@
+// 1.21.1	2024-09-27T17:03:34.1027159	Simple Machines/Block Loot Tables
+1fce706c32a7a2cd2a4cacdbbcd6f80de43d71fb data\simplemachines\loot_table\blocks\quarry.json
+ce3439342d57b3d49a3ac4db6540398ad6b2378d data\simplemachines\loot_table\blocks\washer.json
+4d81e58f7212da231ad1a4097f578a35eac5ec2e data\simplemachines\loot_table\blocks\battery.json
+09ae141bf4f3d061633a953fc2a4b595a303d73f data\simplemachines\loot_table\blocks\furnace_generator.json

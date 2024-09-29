@@ -1,0 +1,8 @@
+{
+  "block.simplemachines.battery": "Battery",
+  "block.simplemachines.furnace_generator": "Furnace Generator",
+  "block.simplemachines.quarry": "Quarry",
+  "block.simplemachines.washer": "Washer",
+  "container.simplemachines.furnace_generator": "Furnace Generator",
+  "container.simplemachines.washer": "Washer"
+}
