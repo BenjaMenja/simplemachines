@@ -6,7 +6,6 @@ import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -29,9 +28,9 @@ public class Battery extends Block implements BlockEntityProvider {
     protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
             if (world.getBlockEntity(pos) instanceof BatteryBlockEntity batteryBlockEntity) {
-                player.sendMessage(Text.of("Energy: " + batteryBlockEntity.getEnergyStorage().amount), true);
+                player.openHandledScreen(batteryBlockEntity);
             }
         }
-        return ActionResult.SUCCESS;
+        return ActionResult.success(world.isClient);
     }
 }

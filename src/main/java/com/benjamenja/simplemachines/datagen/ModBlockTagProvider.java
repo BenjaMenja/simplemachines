@@ -20,12 +20,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WASHER)
                 .add(ModBlocks.QUARRY)
                 .add(ModBlocks.BATTERY)
-                .add(ModBlocks.FURNACE_GENERATOR);
+                .add(ModBlocks.FURNACE_GENERATOR)
+                .add(ModBlocks.MAGMA_GENERATOR)
+                .add(ModBlocks.MACHINE_CASING)
+                .add(ModBlocks.CRUSHER);
 
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.WASHER)
                 .add(ModBlocks.QUARRY)
                 .add(ModBlocks.BATTERY)
-                .add(ModBlocks.FURNACE_GENERATOR);
+                .add(ModBlocks.FURNACE_GENERATOR)
+                .add(ModBlocks.MAGMA_GENERATOR)
+                .add(ModBlocks.MACHINE_CASING)
+                .add(ModBlocks.CRUSHER);
     }
 }

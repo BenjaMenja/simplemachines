@@ -28,16 +28,16 @@ public class FurnaceGeneratorScreen extends HandledScreen<FurnaceGeneratorScreen
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         context.drawTexture(TEXTURE, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
 
-        int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 66);
-        context.fill(this.x + 144, this.y + 10 + 66 - energyBarSize, this.x + 144 + 20, this.y + 10 + 66, 0xFFFF0025);
+        int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 56);
+        context.fill(this.x + 144, this.y + 10 + 56 - energyBarSize, this.x + 144 + 20, this.y + 10 + 56, 0xFFFF0025);
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
-        int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 66);
-        if (isPointWithinBounds(144, 10 + 66 - energyBarSize, 20, energyBarSize, mouseX, mouseY)) {
+        int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 56);
+        if (isPointWithinBounds(144, 10 + 56 - energyBarSize, 20, energyBarSize, mouseX, mouseY)) {
             context.drawTooltip(this.textRenderer, Text.literal(this.handler.getEnergy() + " / " + this.handler.getMaxEnergy() + " Energy"), mouseX, mouseY);
         }
     }

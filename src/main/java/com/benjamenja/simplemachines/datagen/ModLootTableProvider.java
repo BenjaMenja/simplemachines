@@ -19,5 +19,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.QUARRY);
         addDrop(ModBlocks.BATTERY);
         addDrop(ModBlocks.FURNACE_GENERATOR);
+        addDrop(ModBlocks.MAGMA_GENERATOR);
+        addDrop(ModBlocks.MACHINE_CASING);
+        addDrop(ModBlocks.CRUSHER);
     }
 }

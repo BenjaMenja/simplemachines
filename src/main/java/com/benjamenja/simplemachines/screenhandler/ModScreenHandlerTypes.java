@@ -15,9 +15,12 @@ public class ModScreenHandlerTypes {
 
     public static final ScreenHandlerType<FurnaceGeneratorScreenHandler> FURNACE_GENERATOR = register("furnace_generator", FurnaceGeneratorScreenHandler::new, BlockPosPayload.PACKET_CODEC);
     public static final ScreenHandlerType<WasherScreenHandler> WASHER = register("washer", WasherScreenHandler::new, BlockPosPayload.PACKET_CODEC);
+    public static final ScreenHandlerType<MagmaGeneratorScreenHandler> MAGMA_GENERATOR = register("magma_generator", MagmaGeneratorScreenHandler::new, BlockPosPayload.PACKET_CODEC);
+    public static final ScreenHandlerType<CrusherScreenHandler> CRUSHER = register("crusher", CrusherScreenHandler::new, BlockPosPayload.PACKET_CODEC);
+    public static final ScreenHandlerType<BatteryScreenHandler> BATTERY = register("battery", BatteryScreenHandler::new, BlockPosPayload.PACKET_CODEC);
 
     public static <T extends ScreenHandler, P extends CustomPayload> ExtendedScreenHandlerType<T, P> register(String name, ExtendedScreenHandlerType.ExtendedFactory<T, P> factory, PacketCodec<? super RegistryByteBuf, P> codec) {
-        return Registry.register(Registries.SCREEN_HANDLER, SimpleMachines.id("name"), new ExtendedScreenHandlerType<>(factory, codec));
+        return Registry.register(Registries.SCREEN_HANDLER, SimpleMachines.id(name), new ExtendedScreenHandlerType<>(factory, codec));
     }
 
     public static void initialize() {

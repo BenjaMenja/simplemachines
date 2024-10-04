@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "tag": "simplemachines:stones"
+    }
+  },
+  "pattern": [
+    "iii",
+    "isi",
+    "iii"
+  ],
+  "result": {
+    "count": 1,
+    "id": "simplemachines:machine_casing"
+  }
+}

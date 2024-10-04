@@ -22,10 +22,13 @@ public class ModBlocks {
         return Registry.register(Registries.BLOCK, id, block);
     }
 
+    public static final Block MACHINE_CASING = register(new Block(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "machine_casing", true);
     public static final Block WASHER = register(new Washer(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "washer", true);
     public static final Block QUARRY = register(new Quarry(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "quarry", true);
     public static final Block BATTERY = register(new Battery(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "battery", true);
     public static final Block FURNACE_GENERATOR = register(new FurnaceGenerator(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "furnace_generator", true);
+    public static final Block MAGMA_GENERATOR = register(new MagmaGenerator(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "magma_generator", true);
+    public static final Block CRUSHER = register(new Crusher(AbstractBlock.Settings.create().strength(2.0F, 2.0F).requiresTool()), "crusher", true);
 
 
     public static void initialize() {

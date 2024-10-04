@@ -3,6 +3,9 @@
     "simplemachines:washer",
     "simplemachines:quarry",
     "simplemachines:battery",
-    "simplemachines:furnace_generator"
+    "simplemachines:furnace_generator",
+    "simplemachines:magma_generator",
+    "simplemachines:machine_casing",
+    "simplemachines:crusher"
   ]
 }

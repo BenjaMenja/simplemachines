@@ -1,8 +1,16 @@
 {
   "block.simplemachines.battery": "Battery",
+  "block.simplemachines.crusher": "Crusher",
   "block.simplemachines.furnace_generator": "Furnace Generator",
+  "block.simplemachines.machine_casing": "Machine Casing",
+  "block.simplemachines.magma_generator": "Magma Generator",
   "block.simplemachines.quarry": "Quarry",
   "block.simplemachines.washer": "Washer",
+  "container.simplemachines.battery": "Battery",
+  "container.simplemachines.crusher": "Crusher",
   "container.simplemachines.furnace_generator": "Furnace Generator",
-  "container.simplemachines.washer": "Washer"
+  "container.simplemachines.magma_generator": "Magma Generator",
+  "container.simplemachines.washer": "Washer",
+  "item.simplemachines.iron_rod": "Iron Rod",
+  "itemGroup.simplemachines.simple_machines": "Simple Machines"
 }

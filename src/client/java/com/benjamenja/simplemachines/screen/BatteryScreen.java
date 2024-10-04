@@ -1,7 +1,7 @@
 package com.benjamenja.simplemachines.screen;
 
 import com.benjamenja.simplemachines.SimpleMachines;
-import com.benjamenja.simplemachines.screenhandler.WasherScreenHandler;
+import com.benjamenja.simplemachines.screenhandler.BatteryScreenHandler;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.entity.player.PlayerInventory;
@@ -9,27 +9,27 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
-public class WasherScreen extends HandledScreen<WasherScreenHandler> {
+public class BatteryScreen extends HandledScreen<BatteryScreenHandler> {
 
-    private static final Identifier TEXTURE = SimpleMachines.id("textures/gui/container/washer.png");
+    private static final Identifier TEXTURE = SimpleMachines.id("textures/gui/container/empty_inventory.png");
 
-    public WasherScreen(WasherScreenHandler handler, PlayerInventory inventory, Text title) {
+    public BatteryScreen(BatteryScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
     }
 
     @Override
     protected void init() {
         super.init();
+
         this.titleX = (this.backgroundWidth - this.textRenderer.getWidth(this.title)) / 2;
     }
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         context.drawTexture(TEXTURE, this.x, this.y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+
         int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 56);
-        context.fill(this.x + 144, this.y + 10 + 56 - energyBarSize, this.x + 144 + 20, this.y + 10 + 56, 0xFFFF0025);
-        int fluidBarSize = MathHelper.ceil(this.handler.getFluidPercent() * 66);
-        context.fill(this.x + 16, this.y + 10 + 56 - fluidBarSize, this.x + 16 + 20, this.y + 10 + 56, 0xFF0000EE);
+        context.fill(this.x + 80, this.y + 10 + 56 - energyBarSize, this.x + 80 + 20, this.y + 10 + 56, 0xFFFF0025);
     }
 
     @Override
@@ -37,12 +37,8 @@ public class WasherScreen extends HandledScreen<WasherScreenHandler> {
         super.render(context, mouseX, mouseY, delta);
         drawMouseoverTooltip(context, mouseX, mouseY);
         int energyBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 56);
-        if (isPointWithinBounds(144, 10 + 56 - energyBarSize, 20, energyBarSize, mouseX, mouseY)) {
+        if (isPointWithinBounds(80, 10 + 56 - energyBarSize, 20, energyBarSize, mouseX, mouseY)) {
             context.drawTooltip(this.textRenderer, Text.literal(this.handler.getEnergy() + " / " + this.handler.getMaxEnergy() + " Energy"), mouseX, mouseY);
-        }
-        int fluidBarSize = MathHelper.ceil(this.handler.getEnergyPercent() * 56);
-        if (isPointWithinBounds(16, 10 + 56 - fluidBarSize, 20, fluidBarSize, mouseX, mouseY)) {
-            context.drawTooltip(this.textRenderer, Text.literal(this.handler.getFluidAmount() / 81 + " / " + this.handler.getMaxCapacity() / 81 + " Water"), mouseX, mouseY);
         }
     }
 }

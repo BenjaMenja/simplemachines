@@ -2,10 +2,9 @@ package com.benjamenja.simplemachines;
 
 import com.benjamenja.simplemachines.block.ModBlockEntities;
 import com.benjamenja.simplemachines.block.ModBlocks;
-import com.benjamenja.simplemachines.block.entity.BatteryBlockEntity;
-import com.benjamenja.simplemachines.block.entity.FurnaceGeneratorBlockEntity;
-import com.benjamenja.simplemachines.block.entity.WasherBlockEntity;
+import com.benjamenja.simplemachines.block.entity.*;
 import com.benjamenja.simplemachines.item.ModItems;
+import com.benjamenja.simplemachines.itemgroup.ModItemGroups;
 import com.benjamenja.simplemachines.screenhandler.ModScreenHandlerTypes;
 import net.fabricmc.api.ModInitializer;
 
@@ -33,11 +32,19 @@ public class SimpleMachines implements ModInitializer {
 		ModBlocks.initialize();
 		ModBlockEntities.initialize();
 		ModScreenHandlerTypes.initialize();
+		ModItemGroups.initialize();
+
 		EnergyStorage.SIDED.registerForBlockEntity(FurnaceGeneratorBlockEntity::getEnergyProvider, ModBlockEntities.FURNACE_GENERATOR_BLOCK_ENTITY);
 		EnergyStorage.SIDED.registerForBlockEntity(BatteryBlockEntity::getEnergyProvider, ModBlockEntities.BATTERY_BLOCK_ENTITY);
 		EnergyStorage.SIDED.registerForBlockEntity(WasherBlockEntity::getEnergyProvider, ModBlockEntities.WASHER_BLOCK_ENTITY);
+		EnergyStorage.SIDED.registerForBlockEntity(MagmaGeneratorBlockEntity::getEnergyProvider, ModBlockEntities.MAGMA_GENERATOR_BLOCK_ENTITY);
+		EnergyStorage.SIDED.registerForBlockEntity(CrusherBlockEntity::getEnergyProvider, ModBlockEntities.CRUSHER_BLOCK_ENTITY);
+
 		ItemStorage.SIDED.registerForBlockEntity(FurnaceGeneratorBlockEntity::getInventoryProvider, ModBlockEntities.FURNACE_GENERATOR_BLOCK_ENTITY);
 		ItemStorage.SIDED.registerForBlockEntity(WasherBlockEntity::getInventoryProvider, ModBlockEntities.WASHER_BLOCK_ENTITY);
+		ItemStorage.SIDED.registerForBlockEntity(MagmaGeneratorBlockEntity::getInventoryProvider, ModBlockEntities.MAGMA_GENERATOR_BLOCK_ENTITY);
+		ItemStorage.SIDED.registerForBlockEntity(CrusherBlockEntity::getInventoryProvider, ModBlockEntities.CRUSHER_BLOCK_ENTITY);
+
 		FluidStorage.SIDED.registerForBlockEntity(WasherBlockEntity::getFluidTankProvider, ModBlockEntities.WASHER_BLOCK_ENTITY);
 		LOGGER.info("Hello Fabric world!");
 	}

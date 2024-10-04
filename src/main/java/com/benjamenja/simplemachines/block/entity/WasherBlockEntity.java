@@ -3,7 +3,6 @@ package com.benjamenja.simplemachines.block.entity;
 import com.benjamenja.simplemachines.SimpleMachines;
 import com.benjamenja.simplemachines.block.ModBlockEntities;
 import com.benjamenja.simplemachines.network.BlockPosPayload;
-import com.benjamenja.simplemachines.screenhandler.FurnaceGeneratorScreenHandler;
 import com.benjamenja.simplemachines.screenhandler.WasherScreenHandler;
 import com.benjamenja.simplemachines.util.TickableBlockEntity;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
@@ -19,11 +18,14 @@ import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtElement;
 import net.minecraft.network.listener.ClientPlayPacketListener;
@@ -38,9 +40,14 @@ import net.minecraft.util.math.Direction;
 import org.jetbrains.annotations.Nullable;
 import team.reborn.energy.api.base.SimpleEnergyStorage;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class WasherBlockEntity extends BlockEntity implements TickableBlockEntity, ExtendedScreenHandlerFactory<BlockPosPayload> {
 
     public static final Text TITLE = Text.translatable("container." + SimpleMachines.MOD_ID + ".washer");
+
+    private final Map<Item, ItemStack> recipes = new HashMap<>();
 
     private final SimpleInventory inventory = new SimpleInventory(2) {
         @Override
@@ -72,6 +79,22 @@ public class WasherBlockEntity extends BlockEntity implements TickableBlockEntit
 
     public WasherBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.WASHER_BLOCK_ENTITY, pos, state);
+        recipes.put(Items.WHITE_CONCRETE_POWDER, Items.WHITE_CONCRETE.getDefaultStack());
+        recipes.put(Items.BLACK_CONCRETE_POWDER, Items.BLACK_CONCRETE.getDefaultStack());
+        recipes.put(Items.GRAY_CONCRETE_POWDER, Items.GRAY_CONCRETE.getDefaultStack());
+        recipes.put(Items.LIGHT_GRAY_CONCRETE_POWDER, Items.LIGHT_GRAY_CONCRETE.getDefaultStack());
+        recipes.put(Items.RED_CONCRETE_POWDER, Items.RED_CONCRETE.getDefaultStack());
+        recipes.put(Items.BLUE_CONCRETE_POWDER, Items.RED_CONCRETE.getDefaultStack());
+        recipes.put(Items.BROWN_CONCRETE_POWDER, Items.BROWN_CONCRETE.getDefaultStack());
+        recipes.put(Items.ORANGE_CONCRETE_POWDER, Items.ORANGE_CONCRETE.getDefaultStack());
+        recipes.put(Items.YELLOW_CONCRETE_POWDER, Items.YELLOW_CONCRETE.getDefaultStack());
+        recipes.put(Items.LIME_CONCRETE_POWDER, Items.LIME_CONCRETE.getDefaultStack());
+        recipes.put(Items.GREEN_CONCRETE_POWDER, Items.GREEN_CONCRETE.getDefaultStack());
+        recipes.put(Items.CYAN_CONCRETE_POWDER, Items.CYAN_CONCRETE.getDefaultStack());
+        recipes.put(Items.LIGHT_BLUE_CONCRETE_POWDER, Items.LIGHT_BLUE_CONCRETE.getDefaultStack());
+        recipes.put(Items.PURPLE_CONCRETE_POWDER, Items.PURPLE_CONCRETE.getDefaultStack());
+        recipes.put(Items.MAGENTA_CONCRETE_POWDER, Items.MAGENTA_CONCRETE.getDefaultStack());
+        recipes.put(Items.PINK_CONCRETE_POWDER, Items.PINK_CONCRETE.getDefaultStack());
     }
 
     private void update() {
@@ -138,6 +161,16 @@ public class WasherBlockEntity extends BlockEntity implements TickableBlockEntit
         }
         if (this.inventory.isEmpty() || !isValid(this.inventory.getStack(0), 0)) {
             return;
+        }
+
+        Item ingredient = this.inventory.getStack(1).getItem();
+        if (this.energyStorage.amount >= 200 && this.fluidStorage.getAmount() >= FluidConstants.BUCKET / 10 && this.recipes.get(ingredient) != null) {
+            this.inventory.removeStack(1, 1);
+            this.fluidStorage.amount -= FluidConstants.BUCKET / 10;
+            this.energyStorage.amount -= 200;
+            world.spawnEntity(new ItemEntity(world, getPos().getX(), getPos().getY() + 1, getPos().getZ(), this.recipes.get(ingredient)));
+            markDirty();
+            update();
         }
 
         Storage<FluidVariant> itemFluidStorage = this.fluidItemContext.find(FluidStorage.ITEM);
